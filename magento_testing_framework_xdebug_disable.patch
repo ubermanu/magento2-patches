@@ -1,0 +1,11 @@
+--- vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/_bootstrap.php	2022-02-19 17:48:49.123515579 +0100
++++ vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/_bootstrap.php	2022-02-13 14:47:00.859157740 +0100
+@@ -75,5 +75,7 @@
+ // add the debug flag here
+ $debugMode = $_ENV['MFTF_DEBUG'] ?? false;
+ if (!(bool)$debugMode && extension_loaded('xdebug')) {
+-    xdebug_disable();
++    if (function_exists('xdebug_disable')) {
++        xdebug_disable();
++    }
+ }
