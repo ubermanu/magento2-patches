@@ -1,0 +1,13 @@
+--- dev/tests/integration/framework/Magento/TestFramework/Application.php     2022-02-19 19:21:47.373552040 +0100
++++ dev/tests/integration/framework/Magento/TestFramework/Application.php     2022-02-19 19:21:00.104000000 +0100
+@@ -509,6 +509,10 @@
+             $db->restoreFromDbDump();
+         }
+ 
++        if ($cleanup) {
++            $installParams['--cleanup-database'] = '';
++        }
++
+         // run install script
+         $this->_shell->execute(
+             PHP_BINARY . ' -f %s setup:install -vvv ' . implode(' ', array_keys($installParams)),
